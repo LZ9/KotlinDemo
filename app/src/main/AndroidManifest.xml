@@ -35,6 +35,14 @@
 
         </activity>
 
+        <activity
+            android:name=".list.ListActivity"
+            android:label="列表页"
+            android:screenOrientation="portrait">
+
+        </activity>
+
+
     </application>
 
 </manifest>

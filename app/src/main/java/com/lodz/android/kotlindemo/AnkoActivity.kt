@@ -56,6 +56,8 @@ class AnkoActivity : AppCompatActivity() {
 //        startActivity<NullTestActivity>()
 //        startActivity(intentFor<AnkoActivity>("id" to 5))
 
+        PrintLog.d("testtag", intent.getIntExtra("id", 0).toString())
+
         doAsync {
             PrintLog.d("testtag", Thread.currentThread().name)// 异步线程
             uiThread {
