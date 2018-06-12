@@ -44,12 +44,19 @@ class MainActivity : AppCompatActivity() {
         val list = ArrayList<PlayerBean>()// Kotlin实例化一个对象时不需要new关键字
         list.add(PlayerBean(1, "MUN", "Jack", 27))
         list.add(PlayerBean(2, "MUN", "Mick", 19))
-        for (bean in list) {
+        for (bean in list) {//迭代对象
             PrintLog.d("testtag", bean.getTitle())
+        }
+        for (index in list.indices) {// 迭代索引
+            PrintLog.d("testtag", index.toString())
+        }
+
+        for ((index, bean) in list.withIndex()) {//同时迭代索引和对象
+            PrintLog.d("testtag", index.toString() + " ; " + bean.getTitle())
         }
 
         with(list[0]) {
-            PrintLog.e("testtag", "$name")//利用with简化代码
+            PrintLog.e("testtag", name)//利用with可以直接访问到对象里的public数据
         }
 
         val peopleBean = list.get(0);
@@ -104,6 +111,8 @@ class MainActivity : AppCompatActivity() {
             startActivity<ListActivity>()
         }
         operator()
+        vars(1,23,63,78,54)
+        whenTest()
     }
 
     fun jump() { //参数id为Int类型
@@ -177,17 +186,34 @@ class MainActivity : AppCompatActivity() {
         ITEMS.set(0, "456")
         PrintLog.d("testtag", "ITEMS[0] = " + ITEMS[0])
 
-
-        val x = 1
-        val y = 1
-        // 等于操作符
-        PrintLog.i("testtag", "x == y  " + (x == y).toString())
-        PrintLog.i("testtag", "x === y  " + (x === y).toString())
-        PrintLog.i("testtag", "x.equals(y)  " + (x.equals(y)).toString())// 对值进行判断
-        PrintLog.i("testtag", "x != y " + (x != b).toString())
-        PrintLog.i("testtag", "x !== y " + (x !== b).toString())
-        PrintLog.i("testtag", "!x.equals(y)  " + (!x.equals(y)).toString())// 对值进行判断
+//        shl(bits) – 左移位 (Java’s <<)
+//        shr(bits) – 右移位 (Java’s >>)
+//        ushr(bits) – 无符号右移位 (Java’s >>>)
+//        and(bits) – 与
+//        or(bits) – 或
+//        xor(bits) – 异或
+//        inv() – 反向
 
 
     }
+
+    /** 可变参数入参 */
+    fun vars(vararg indexs:Int){
+        for(item in indexs){
+            PrintLog.e("testtag", item.toString())
+        }
+    }
+
+    fun whenTest(){
+        val x = 25
+        when (x) {
+            1 -> PrintLog.d("testtag", "x == 1")
+            2 -> PrintLog.d("testtag", "x == 2")
+            3, 4 -> PrintLog.d("testtag", "x == 3或4")
+            in 1..10 -> PrintLog.d("testtag", "x is in [1,10]")
+            !in 10..20 -> PrintLog.d("testtag", "x is outside [10,20]")
+            else -> PrintLog.d("testtag", "其他情况")
+        }
+    }
+
 }
