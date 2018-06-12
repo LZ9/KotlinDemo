@@ -2,6 +2,8 @@ package com.lodz.android.kotlindemo
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.Button
 import com.lodz.android.core.log.PrintLog
 
 /**
@@ -15,6 +17,9 @@ class NullTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val jumpBtn = findViewById(R.id.jump_btn) as Button
+        jumpBtn.visibility = View.GONE
 
         b = null
         PrintLog.d("testtag", b ?: "")
