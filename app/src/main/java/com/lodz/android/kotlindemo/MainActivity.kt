@@ -8,7 +8,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.lodz.android.core.log.PrintLog
+import com.lodz.android.kotlindemo.bean.Outer
 import com.lodz.android.kotlindemo.bean.PlayerBean
+import com.lodz.android.kotlindemo.bean.StudentBean
 import com.lodz.android.kotlindemo.list.ListActivity
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
@@ -143,6 +145,25 @@ class MainActivity : AppCompatActivity() {
         vars(1, 23, 63, 78, 54)
         whenTest()
         operatorList()
+
+        val studentBean = StudentBean()
+        studentBean.name = "小明"
+        studentBean.age = 8
+        studentBean.grade = "三年二班"
+        studentBean.studentNo = 20
+        PrintLog.d("testtag", studentBean.name + " , " + studentBean.age + " , " + studentBean.grade + " , "
+                + studentBean.studentNo + " , " + studentBean.major)
+        /** 小明 , 8 , 人民小学-三年二班 , 21 , 数学 */
+
+        val inner = Outer().Inner()
+        PrintLog.i("testtag", "id : " + inner.getId() + " , value : " + inner.getValue())
+        /** id : 12312 , value : 成员属性 */
+
+        val tag: String? = null
+        if (tag is String) {//判断对象的类型
+
+        }
+
     }
 
     private fun jump() { //参数id为Int类型
@@ -551,22 +572,20 @@ class MainActivity : AppCompatActivity() {
         /** listWithNull.lastIndexOf : -1 */
 
         // 返回符合给定函数条件的最后一个元素，如果没有符合则返回null
-        PrintLog.i("testtag", "list.lastOrNull : " + list.lastOrNull{it in 2..8})
+        PrintLog.i("testtag", "list.lastOrNull : " + list.lastOrNull { it in 2..8 })
         /** list.lastOrNull : 4 */
-        PrintLog.i("testtag", "list.lastOrNull : " + list.lastOrNull{it in 200..500})
+        PrintLog.i("testtag", "list.lastOrNull : " + list.lastOrNull { it in 200..500 })
         /** list.lastOrNull : null */
 
-//        lastOrNull
-//        。
-//        val list = listOf(1, 2, 3, 4, 5, 6)
-//        assertNull(list.lastOrNull { it % 7 == 0 })
-//        single
-//        返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常。
-//        assertEquals(5, list.single { it % 5 == 0 })
-//        singleOrNull
-//        返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null。
-//        assertNull(list.singleOrNull { it % 7 == 0 })
+        // 返回符合给定函数的单个元素，如果没有符合或者超过一个，则抛出异常。
+        PrintLog.i("testtag", "list.single : " + list.single { it == 49 })
+        /** list.single : 49 */
 
+        // 返回符合给定函数的单个元素，如果没有符合或者超过一个，则返回null。
+        PrintLog.i("testtag", "list.singleOrNull : " + list.singleOrNull { it == 49 })
+        /** list.singleOrNull : 49 */
+        PrintLog.i("testtag", "list.singleOrNull : " + list.singleOrNull { it == 1 })
+        /** list.singleOrNull : null */
 
     }
 }

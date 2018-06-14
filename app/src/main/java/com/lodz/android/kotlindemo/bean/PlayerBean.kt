@@ -7,4 +7,8 @@ package com.lodz.android.kotlindemo.bean
 class PlayerBean(var id: Int, var club: String, name: String, age: Int) : PeopleBean(name, age) {
 
     fun getTitle(): String = name + "_" + club// 返回值可以直接使用"="来赋值
+
+    override fun getFirstName(): String {
+        return "_" + super.getFirstName() + "_"
+    }
 }

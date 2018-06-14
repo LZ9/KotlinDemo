@@ -11,9 +11,15 @@ open class PeopleBean {
 
     constructor()
 
-    constructor(name: String, age: Int) : this(){
+    constructor(name: String, age: Int) : this() {
         this.name = name
         this.age = age
     }
 
+    open fun getFirstName(): String {// 可以被重写的方法需要加上open关键字
+        if (name.length > 0) {
+            return name.substring(0, 1)
+        }
+        return name
+    }
 }
