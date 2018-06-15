@@ -30,4 +30,10 @@
         android:text="list"
         android:visibility="gone" />
 
+    <Button
+        android:id="@+id/contract_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="接口测试"
+        android:visibility="gone" />
 </LinearLayout>

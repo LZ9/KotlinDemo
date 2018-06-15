@@ -43,6 +43,13 @@
 
         </activity>
 
+        <activity
+            android:name=".contract.FlyActivity"
+            android:label="接口测试类"
+            android:screenOrientation="portrait">
+
+        </activity>
+
 
     </application>
 
