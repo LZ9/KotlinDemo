@@ -11,6 +11,7 @@ import com.lodz.android.core.log.PrintLog
 import com.lodz.android.kotlindemo.bean.Outer
 import com.lodz.android.kotlindemo.bean.PlayerBean
 import com.lodz.android.kotlindemo.bean.StudentBean
+import com.lodz.android.kotlindemo.enums.ColorEnum
 import com.lodz.android.kotlindemo.list.ListActivity
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
@@ -164,6 +165,7 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        enums()
     }
 
     private fun jump() { //参数id为Int类型
@@ -586,6 +588,25 @@ class MainActivity : AppCompatActivity() {
         /** list.singleOrNull : 49 */
         PrintLog.i("testtag", "list.singleOrNull : " + list.singleOrNull { it == 1 })
         /** list.singleOrNull : null */
+
+    }
+
+    /** 枚举测试 */
+    private fun enums() {
+        PrintLog.e("testtag", "ColorEnum.GREEN : " + ColorEnum.GREEN)
+        PrintLog.e("testtag", "ColorEnum.GREEN : " + ColorEnum.GREEN.color)
+        PrintLog.e("testtag", "ColorEnum.GREEN.name : " + ColorEnum.GREEN.name)
+        PrintLog.e("testtag", "ColorEnum.GREEN.ordinal : " + ColorEnum.GREEN.ordinal)
+        PrintLog.e("testtag", "valueOf : " + ColorEnum.valueOf("GREEN"))
+        PrintLog.e("testtag", "values : " + ColorEnum.values().joinToString { it.name})
+        /**
+         * ColorEnum.GREEN : GREEN
+         * ColorEnum.GREEN : 16711680
+         * ColorEnum.GREEN.name : GREEN
+         * ColorEnum.GREEN.ordinal : 1
+         * valueOf : GREEN
+         * values : RED, GREEN, BLUE
+         */
 
     }
 }
