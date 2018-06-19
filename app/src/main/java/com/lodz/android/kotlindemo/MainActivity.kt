@@ -12,6 +12,7 @@ import com.lodz.android.kotlindemo.bean.Outer
 import com.lodz.android.kotlindemo.bean.PlayerBean
 import com.lodz.android.kotlindemo.bean.StudentBean
 import com.lodz.android.kotlindemo.contract.FlyActivity
+import com.lodz.android.kotlindemo.delegate.DelegatesExt
 import com.lodz.android.kotlindemo.enums.ColorEnum
 import com.lodz.android.kotlindemo.list.ListActivity
 import org.jetbrains.anko.intentFor
@@ -38,6 +39,11 @@ class MainActivity : AppCompatActivity() {
         // val的懒加载写法
         findViewById(R.id.text_tv) as TextView
     }
+
+    // 通过委托来实现sp的赋值和读取
+    var titleStr: String by DelegatesExt.stringPreference(this, "SP_TITLE", "时气温去乌克兰交叉路口增加线程了卡萨丁")
+
+    var textLong : Long by DelegatesExt.preference(this, "SP_TEXT", 1)
 
     lateinit var club: String// var的懒加载写法，lateinit不支持int、boolean、long等这些会有默认值的原始类型
 
@@ -76,11 +82,12 @@ class MainActivity : AppCompatActivity() {
             /** Jack */
         }
 
-        val peopleBean = list.get(0);
+        val peopleBean = list.get(0)
         PrintLog.i("testtag", peopleBean.name)
         /** Jack */
 
-        mTextTv.text = "哈哈哈哈";
+        mTextTv.text = "哈哈哈哈"
+        mTextTv.text = titleStr + "-" + textLong
         club = "MUN"
 
         (findViewById(R.id.jump_btn) as Button).setOnClickListener {
@@ -89,7 +96,7 @@ class MainActivity : AppCompatActivity() {
             jump()
         }
 
-        val itemList = ITEMS;
+        val itemList = ITEMS
         itemList.add("Mon 7/15 - Sunny - 21/11")
 
 
@@ -100,7 +107,7 @@ class MainActivity : AppCompatActivity() {
         val map = LinkedHashMap<String, String>()
         map["name"] = "chaychan"
         map["age"] = "22 years old"
-        map["hobby"] = "programming";
+        map["hobby"] = "programming"
         for ((k, v) in map) {//遍历map
             PrintLog.i("testtag", "$k  :  $v")
         }
@@ -202,6 +209,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         toast("退出")
+        titleStr = "测试时间：" + System.currentTimeMillis() + "-"
+        textLong = Random().nextLong();
         super.onBackPressed()
     }
 

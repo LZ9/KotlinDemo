@@ -1,5 +1,8 @@
 package com.lodz.android.kotlindemo.delegate
 
+import android.content.Context
+import com.lodz.android.kotlindemo.sp.Preference
+import com.lodz.android.kotlindemo.sp.StringPreference
 import kotlin.properties.ReadWriteProperty
 import kotlin.reflect.KProperty
 
@@ -8,6 +11,10 @@ import kotlin.reflect.KProperty
  * Created by zhouL on 2018/6/12.
  */
 object DelegatesExt {
+
+    fun stringPreference(context: Context, name: String, default: String) = StringPreference(context, name, default)
+
+    fun <T> preference(context: Context, name: String, default: T) = Preference(context, name, default)
 
     /** 只能赋值一次的非空委托 */
     fun <T> notNullSingleValue(): ReadWriteProperty<Any?, T> = NotNullSingleValueVar()
