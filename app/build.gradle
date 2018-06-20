@@ -28,5 +28,5 @@ dependencies {
     implementation 'com.jakewharton:butterknife:8.8.1'
     kapt 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    implementation 'cn.lodz:Component:1.5.0'
+    implementation 'cn.lodz:Component:1.5.1'
 }
