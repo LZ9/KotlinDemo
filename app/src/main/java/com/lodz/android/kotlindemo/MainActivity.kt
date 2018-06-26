@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.lodz.android.core.log.PrintLog
+import com.lodz.android.kotlindemo.`object`.DeviceUtils
 import com.lodz.android.kotlindemo.bean.Outer
 import com.lodz.android.kotlindemo.bean.PlayerBean
 import com.lodz.android.kotlindemo.bean.StudentBean
@@ -189,8 +190,7 @@ class MainActivity : AppCompatActivity() {
         // let 函数只会在 str 不是null的时候才会执行。否则它会返回null。也就是我们想达到的效果。
         str?.let { PrintLog.d("testtag", "str is not null") }
 
-
-
+        PrintLog.e("testtag", DeviceUtils.getDeviceName())
 
     }
 
